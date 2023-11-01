@@ -1,0 +1,10 @@
+body {
+  box-sizing: border-box;
+  font-family: Helvetica;
+  color: #424748;
+}
+
+span {
+  font-size: 20px;
+  margin-left: 30px;
+}

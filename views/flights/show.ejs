@@ -1,0 +1,42 @@
+<%- include('../partials/header') %>
+
+<section id="show-page">
+  <div>Airline: <%= flight.airline %></div>
+
+  <div>Airport: <%= flight.airport %></div>
+
+  <div>Flight No.: <%= flight.flightNo %></div>
+
+  <div>Departure Date: <%= flight.departs %></div>
+  <br />
+  <section>
+    <h4>Add Itinerary</h4>
+    <form action="/flights/<%= flight._id %>/destination" method="POST">
+      <label for="airport">Airport: </label>
+      <select name="airport" id="airport">
+        <option value="ICN">ICN</option>
+        <option value="SIN">SIN</option>
+        <option value="LAX">LAX</option>
+        <option value="DEN">DEN</option>
+      </select>
+      <label for="arrival">Arrival Date:</label>
+      <input type="date" name="arrival" />
+      <button>Add</button>
+    </form>
+    <br />
+  </section>
+  <% flight.destination.forEach(d => { %>
+  <span>&#8595;</span>
+  <hr />
+  <div>Destination: <%= d.airport %></div>
+  <div>
+    Arrival Time: <%= d.arrival %>
+    <hr />
+  </div>
+  <a href="/flights/<%= flight._id %>/ticket">Add Ticket</a>
+  <% if(ticket) { %> <% ticket.forEach(t =>{ %>
+  <div>Seat: <%= t.seat %> &bsol; Price: $<%= t.price %> <br /></div>
+  <% }) %> <% }%> <% }) %>
+</section>
+
+<%- include('../partials/footer') %>

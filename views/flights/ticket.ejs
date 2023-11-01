@@ -1,0 +1,18 @@
+<%- include('../partials/header') %>
+
+<form action="/flights/<%= flight._id %>/ticket" method="POST">
+  <label for="seat">Seat:</label>
+  <input
+    type="text"
+    name="seat"
+    id="seat"
+    placeholder="Uppercase+10 to 99,e.g.B34"
+    pattern="[A-Z][1-9]\d?"
+  />
+  <label for="price">Price: $</label>
+  <input type="number" name="price" min="0" />
+  <button>Add</button>
+</form>
+<a href="/flights/<%= flight._id %>">Cancel</a>
+
+<%- include('../partials/footer') %>
